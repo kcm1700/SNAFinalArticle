@@ -28,6 +28,7 @@
 \usepackage[labelfont=bf]{caption}
 \usepackage{subcaption}
 \usepackage{longtable}
+\usepackage[section]{placeins}
 
 \DeclareGraphicsExtensions{.png}
 
@@ -119,7 +120,7 @@ GitHub에는 1400만명 이상의 개발자와 200만 개 이상의 프로젝트
 \begin{tabular}{|m{2.5cm}|m{4cm}|m{4.0cm}|}
 
 \hline
-
+\rowcolor[gray]{0.8}
 종류 & 항목 & 기간 \\
 
 \hline
@@ -177,14 +178,15 @@ follower 개발자 목록 &
 	\label{fig:fdist}
 \end{figure}
 
+\FloatBarrier
 
 \subsection{개발자와 언어 사이의 관계}
 
 \subsubsection{Multilingual 개발자 비율}
 
-만약 모든 개발자가 한 가지 언어만 사용한다면, 개발자간의 관계에 의한 언어 전파는 발생하지 않는다고 할 수 있다. 그래서 가장 먼저 분석한 것은 여러 언어를 사용하는 개발자가 얼마나 되는가 하는 것이었다.
+만약 모든 개발자가 한 가지 언어만 사용한다면, 개발자간의 관계에 의한 언어 전파는 발생하지 않는다고 할 수 있다. 그래서 가장 먼저 분석한 것은 여러 언어를 사용하는 개발자가 얼마나 되는가 하는 것이었다. 분석한 결과는 다음 {\bf Figure \ref{fig:langnum}}에 그래프로 나타냈다.
 
-\begin{figure}
+\begin{figure}[hb]
 \includegraphics[width=\textwidth]{image10}
 \caption{사용 언어 개수와 개발자 분포 그래프. 가로 축은 사용하는 언어의 수이고 세로 축은 그러한 개발자의 수를 나타낸다.}
 \label{fig:langnum}
@@ -192,13 +194,17 @@ follower 개발자 목록 &
 
 한 가지 이상의 언어를 사용하는 97,206 명 중에서 2개 이상의 언어를 사용하는 사람은 77,355 명 존재했다. 즉, 여러 언어를 사용하는 개발자 비율이 0.796 이상이므로 다른 개발자에게 영향을 받아서 새로운 언어를 사용할 가능성도 충분히 있다고 볼 수 있다.
 
+\FloatBarrier
+
 \subsubsection{언어별 Multilingual 개발자 비율}
 
-\begin{figure}[ht]
-\includegraphics[width=\textwidth]{image04}
-\caption{언어별 사용자수 및 multilingual 사용자수 그래프. 사용자수에 따라 정렬하였다.}
-\label{fig:multilingual}
-\end{figure}
+\FloatBarrier
+
+\begin{center}
+	\includegraphics[width=\textwidth]{image04}
+	\captionof{figure}{언어별 사용자수 및 multilingual 사용자수 그래프. 사용자수에 따라 정렬하였다.}
+	\label{fig:multilingual}
+\end{center}
 
 \begin{longtable}{|c|r|r|r|}
 \hline
@@ -270,6 +276,8 @@ follower 개발자 목록 &
 \end{longtable}
 
 개발자가 100명 이상인 언어 중에서 여러 언어를 사용하는 개발자의 비율은 위과 같다. 대체로 JavaScript, Java, C\#, PHP 등 전통적인 언어를 사용하는 개발자 중에서 여러 언어를 사용하는 개발자들의 비율이 작았다. 하지만 예외적으로 C++의 경우 다른 언어만큼 여러 언어를 사용하는 개발자가 있었고, C의 경우는 여러 언어를 사용하는 개발자의 비율이 높은 편이었다.
+
+\FloatBarrier
 
 \subsection{언어간의 관계}
 
@@ -399,7 +407,7 @@ $$
 Pr(k) = \frac{\textrm{number of new links formed}}{\textrm{number of pairs that share } k \textrm{ neighbors}}
 $$
 
-다음은 계산 결과 표이다. $k$는 공통된 이웃의 수를 의미하고, $N_{pair}$는 공통된 이웃의 수가 $k$인 노드 쌍의 수를 나타낸다. 다음 snapshot 1→2와 2→3은 각각 스냅숏 1, 2, 3 사이에 새로 추가된 관계의 수를 의미한다. 이 수치를 이용해  공통된 이웃의 수가 $k$일 때, 스냅숏 사이에 관계가 생길 확률을 계산한 것이 $Pr(k)$이다. 다음 그래프는 스냅숏 사이에 관계가 생길 확률을 계산한 것을 그린 것이다. 단, 표본의 수가 너무 적은 경우 믿을 수 없는 값이 나오기 때문에 어느 정도 이상의 표본만 있는 $k$만 계산하였다. 새로 생긴 관계의 수가 약 20개 이상인 $k$에 대해서만 그래프에 나타내었다. 
+다음은 계산 결과 표이다. $k$는 공통된 이웃의 수를 의미하고, $N_{pair}$는 공통된 이웃의 수가 $k$인 노드 쌍의 수를 나타낸다. 다음 snapshot 1→2와 2→3은 각각 스냅숏 1, 2, 3 사이에 새로 추가된 관계의 수를 의미한다. 이 수치를 이용해  공통된 이웃의 수가 $k$일 때, 스냅숏 사이에 관계가 생길 확률을 계산한 것이 $Pr(k)$이다. 다음 그래프는 스냅숏 사이에 관계가 생길 확률을 계산한 것을 그린 것이다. 단, 표본의 수가 너무 적은 경우 믿을 수 없는 값이 나오기 때문에 어느 정도 이상의 표본만 있는 $k$만 계산하였다. 새로 생긴 관계의 수가 약 20개 이상인 $k$에 대해서만 {\bf Figure \ref{fig:triadic}} 그래프에 나타내었다. 
 
 \begin{longtable}{|c|r|r|r|l|}
 
@@ -497,6 +505,7 @@ $$
 
 생성되는 경우와 생성되지 않는 경우의 binomial distribution으로 보고 계산하였다. $z$ 값은 95\%에 해당하는 1.96을 사용하였다.
 
+\FloatBarrier
 
 \subsection{Focal Closure}
 
@@ -586,15 +595,16 @@ $Pr(k)$ \\ \hline
 
 \end{longtable}
 
-\begin{figure}
+\begin{center}
 \includegraphics[width=\textwidth]{image16}
-\caption{Focal Closure 확률 그래프. 가로 축은 공통 언어 개수를 의미하고, 세로 축은 링크가 형성될 확률을 의미한다. 파란색과 오렌지색은 snapshot 사이에서 계산한 것이고, 회색은 두 구간을 평균낸 것이다. Error bar도 표현하였다.}
+\captionof{figure}{Focal Closure 확률 그래프. 가로 축은 공통 언어 개수를 의미하고, 세로 축은 링크가 형성될 확률을 의미한다. 파란색과 오렌지색은 snapshot 사이에서 계산한 것이고, 회색은 두 구간을 평균낸 것이다. Error bar도 표현하였다.}
 \label{fig:focallang}
-\end{figure}
+\end{center}
 
 Triadic Closure와 마찬가지로 공통 언어 개수가 많을수록 사용자끼리 관계를 맺을 가능성이 높았고 대략 비례하는 모습을 보였다. 마찬가지로 공통 이웃 개수가 많아질수록 새로 생긴 관계의 표본 수가 작아지면서 변동이 커지는 모습이 보였다.
 error bar는 Wilson score interval을 사용하여 계산하였고 방법은 이전과 같다.
 
+\FloatBarrier
 
 
 \subsubsection{User vs 프로젝트}
@@ -662,6 +672,7 @@ $Pr(k)$ \\ \hline
 
 프로젝트는 언어에 비해 공유할 확률이 낮다. 그래서 대부분의 새로운 관계는 작은 $k$ 값에 더 집중이 되었다. 프로젝트 공통 개수가 7만 되어도 큰 의미가 없을 정도로 표본 수가 적어져서 6까지만 계산하였다. focus를 언어로 한 것에 비해 확실한 관계를 보기는 어려웠다.
 
+\FloatBarrier
 
 
 \subsection{Membership Closure}
@@ -706,6 +717,7 @@ $$
 Javascript와 Python은 피크가 0 또는 1에 있고 그 이후로 감소했다. Go나 Rust와 같이 비교적 새로 등장한 언어들은 피크가 비교적 늦게 나타나는 것을 볼 수 있었다. Go와 Rust의 경우 같은 언어를 사용하는 follow 관계에 있는 사람들이 많을수록 따라서 쓰는 경향이 더 강하다. 
 
 
+\FloatBarrier
 \section{Language Propagation}
 
 언어별로 개발자가 친구에게 영향을 받아 언어를 사용했는지 다른 이유로 사용했는지 알아보았다. 조사한 방법은 다음과 같다.
@@ -715,8 +727,17 @@ Javascript와 Python은 피크가 0 또는 1에 있고 그 이후로 감소했�
 {\bf Figure \ref{fig:cctrend}}과 같이 나왔다.
 
 \begin{figure}
-\includegraphics[width=\textwidth]{image11}
-\includegraphics[width=\textwidth]{image_cc}
+
+\begin{subfigure}{0.99\textwidth}
+	\includegraphics[width=\textwidth]{image11}
+	\caption{일부 언어로 100개까지만 그린 그래프}
+\end{subfigure}
+
+\begin{subfigure}{0.99\textwidth}
+	\includegraphics[width=\textwidth]{image_cc}
+	\caption{더 다양한 언어에 대해 700개까지의 변화를 그린 그래프}
+\end{subfigure}
+
 \caption{언어별 독립된 그룹의 개수 변화 그래프.}
 \label{fig:cctrend}
 \end{figure}
